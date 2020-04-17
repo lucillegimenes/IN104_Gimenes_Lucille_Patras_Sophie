@@ -2,22 +2,25 @@ import marqueurs
 import distance
 import unittest
 
+
 class TestMarqueurs(unittest.TestCase):
-    boulangerie=Commerce('Boulangerie','Nice',(8,4),'ouvert','velo')
-    jean=Individu('Jean','Nice',(1,1),22,'velo')
 
     def test_boolouverture(self):
-        result=boulangerie.boolOuverture()
-        self.assertTrue(result)
+        boulangerie=marqueurs.Commerce('Boulangerie','Nice',(8,4),'ouvert','velo')
+        self.assertTrue(boulangerie.boolOuverture())
     def test_getDistance(self):
+        boulangerie=marqueurs.Commerce('Boulangerie','Nice',(8,4),'ouvert','velo')
+        jean=marqueurs.Individu('Jean','Nice',(1,1),22,'velo')
         result=boulangerie.getDistance(jean.position)
         self.assertEqual(10,result)
     def test_distance(self):
-        result=distance(jean,boulangerie)
-        self.assertTrue(result)
+        boulangerie=marqueurs.Commerce('Boulangerie','Nice',(8,4),'ouvert','velo')
+        jean=marqueurs.Individu('Jean','Nice',(1,1),82,'velo')
+        self.assertFalse(distance(jean,boulangerie))
     def test_getId(self):
+        jean=marqueurs.Individu('Jean','Nice',(1,1),22,'velo')
         result=jean.getId
-        self.assertEqual(result,jean.idt)
+        self.assertEqual(result,'Jean')
       
 if __name__ == "__main__":
     unittest.main()
